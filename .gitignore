@@ -1,0 +1,10 @@
+cookies.json
+__pycache__/
+*.pyc
+*.pyo
+.pypirc
+fb_debug.html
+store_original.jpg
+store_logo_googlebot.jpg
+.idea/
+.vscode/

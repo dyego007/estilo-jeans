@@ -1,0 +1,375 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Archivo+Black&display=swap');
+
+:root {
+    --jeansDark: #08090C;
+    --jeansSlate: #121620;
+    --jeansSlateLight: #1E2530;
+    --jeansBlue: #2563EB;
+    --jeansNeon: #06B6D4;
+    --brandLight: #F8FAFC;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    color: var(--brandLight);
+    background-color: var(--jeansDark);
+    overflow-x: hidden;
+}
+
+/* Streetwear Mesh Gradient Background Effect */
+.bg-jeans-mesh {
+    position: relative;
+}
+
+.bg-jeans-mesh::before,
+.bg-jeans-mesh::after {
+    content: '';
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    filter: blur(140px);
+    opacity: 0.12;
+    z-index: 0;
+    pointer-events: none;
+    animation: float-gradient 25s infinite alternate ease-in-out;
+}
+
+.bg-jeans-mesh::before {
+    background: radial-gradient(circle, var(--jeansBlue) 0%, transparent 100%);
+    top: -5%;
+    left: -10%;
+}
+
+.bg-jeans-mesh::after {
+    background: radial-gradient(circle, var(--jeansNeon) 0%, transparent 100%);
+    bottom: 5%;
+    right: -10%;
+    animation-delay: -7s;
+}
+
+/* Additional blur orb for center page */
+.jeans-orb {
+    position: absolute;
+    width: 450px;
+    height: 450px;
+    border-radius: 50%;
+    filter: blur(120px);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Glassmorphism Classes */
+.glass {
+    background: rgba(18, 22, 32, 0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+/* Custom Scrollbar for Streetwear Aesthetics */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--jeansDark);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--jeansSlateLight);
+    border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--jeansNeon);
+}
+
+/* Hide scrollbar utility */
+.scrollbar-none::-webkit-scrollbar {
+    display: none;
+}
+.scrollbar-none {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Animations */
+@keyframes float-gradient {
+    0% {
+        transform: translate(0, 0) scale(1) rotate(0deg);
+    }
+    50% {
+        transform: translate(60px, 30px) scale(1.1) rotate(90deg);
+    }
+    100% {
+        transform: translate(-30px, 60px) scale(0.9) rotate(180deg);
+    }
+}
+
+@keyframes neon-pulse {
+    0%, 100% {
+        box-shadow: 0 0 5px rgba(6, 182, 212, 0.2), 0 0 10px rgba(6, 182, 212, 0.1);
+        border-color: rgba(6, 182, 212, 0.3);
+        transform: scale(1);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(6, 182, 212, 0.7), 0 0 35px rgba(6, 182, 212, 0.4);
+        border-color: rgba(6, 182, 212, 1);
+        transform: scale(1.1);
+    }
+}
+
+.cart-pulsing {
+    animation: neon-pulse 0.5s ease-in-out 2;
+}
+
+/* Skeleton Loading Premium Shimmer Effect */
+.skeleton-shimmer {
+    background: linear-gradient(90deg, #121620 25%, #1e2530 50%, #121620 75%);
+    background-size: 200% 100%;
+    animation: shimmer-effect 1.4s infinite linear;
+}
+
+@keyframes shimmer-effect {
+    to {
+        background-position-x: -200%;
+    }
+}
+
+/* Applies shimmer to placeholders */
+.story-skeleton div, .post-skeleton div {
+    background: linear-gradient(90deg, #121620 25%, #1c232f 50%, #121620 75%);
+    background-size: 200% 100%;
+    animation: shimmer-effect 1.4s infinite linear;
+}
+
+/* Stories Ring Design */
+.story-ring-active {
+    background: linear-gradient(135deg, #2563EB, #06B6D4, #8B5CF6);
+    padding: 3px;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+.story-ring-highlight {
+    background: linear-gradient(135deg, #1e293b, #475569);
+    padding: 3.5px;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+.story-item:hover .story-ring-active {
+    transform: scale(1.05) rotate(15deg);
+}
+
+.story-item:hover .story-ring-highlight {
+    transform: scale(1.05);
+}
+
+/* Cart Toggle Animation classes */
+.cart-open {
+    overflow: hidden;
+}
+
+/* Custom Checkbox styles for sizes */
+.size-selector input:checked + label {
+    background-color: var(--jeansNeon);
+    color: var(--jeansDark);
+    border-color: var(--jeansNeon);
+    box-shadow: 0 0 10px rgba(6, 182, 212, 0.3);
+}
+
+.color-selector input:checked + label {
+    box-shadow: 0 0 0 2px var(--jeansDark), 0 0 0 4px var(--jeansNeon);
+}
+
+/* Reels snaps */
+#reels-carousel::-webkit-scrollbar {
+    height: 4px;
+}
+#reels-carousel::-webkit-scrollbar-thumb {
+    background: var(--jeansSlateLight);
+}
+
+.reels-card {
+    scroll-snap-align: start;
+    flex: 0 0 calc(25% - 18px); /* 4 items per row on desktop */
+    min-width: 260px;
+}
+
+@media (max-width: 1024px) {
+    .reels-card {
+        flex: 0 0 calc(33.333% - 16px);
+        min-width: 220px;
+    }
+}
+
+@media (max-width: 768px) {
+    .reels-card {
+        flex: 0 0 calc(50% - 12px);
+        min-width: 190px;
+    }
+}
+
+@media (max-width: 480px) {
+    .reels-card {
+        flex: 0 0 65%;
+        min-width: 175px;
+    }
+}
+
+/* Play Icon Overlay Pulse */
+.play-pulse {
+    animation: play-scale 2s infinite alternate ease-in-out;
+}
+
+@keyframes play-scale {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0px rgba(6, 182, 212, 0.3);
+    }
+    100% {
+        transform: scale(1.08);
+        box-shadow: 0 0 0 10px rgba(6, 182, 212, 0);
+    }
+}
+
+/* Glow button animations */
+.btn-glow {
+    box-shadow: 0 4px 15px rgba(6, 182, 212, 0.2);
+    transition: all 0.3s ease;
+}
+
+.btn-glow:hover {
+    box-shadow: 0 4px 25px rgba(6, 182, 212, 0.5);
+    border-color: rgba(6, 182, 212, 0.5);
+}
+
+/* Card Zoom Effect */
+.card-hover-effect {
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-hover-effect:hover {
+    transform: translateY(-6px);
+    border-color: rgba(6, 182, 212, 0.3);
+    box-shadow: 0 20px 30px -10px rgba(6, 182, 212, 0.15);
+}
+
+/* Stories Progress Indicator Style */
+.progress-bar-fill {
+    height: 100%;
+    background-color: var(--brandLight);
+    width: 0%;
+    transition: width linear;
+}
+
+.progress-bar-filled {
+    width: 100% !important;
+    transition: none !important;
+}
+
+.progress-bar-unfilled {
+    width: 0% !important;
+    transition: none !important;
+}
+
+/* Audio Wave Animation for Volume indicator */
+@keyframes volume-wave {
+    0%, 100% { height: 4px; }
+    50% { height: 14px; }
+}
+
+.wave-bar {
+    display: inline-block;
+    width: 2px;
+    background: white;
+    margin: 0 1px;
+    animation: volume-wave 0.8s infinite ease-in-out;
+}
+.wave-bar:nth-child(2) { animation-delay: 0.15s; }
+.wave-bar:nth-child(3) { animation-delay: 0.3s; }
+
+/* Entrance Splash Screen styles (Estética Limpa Premium) */
+#splash-screen {
+    background-color: var(--jeansDark);
+    z-index: 9999;
+}
+
+.splash-logo-intro {
+    animation: splash-logo-in 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    transform: scale(0.6);
+    opacity: 0;
+}
+
+.splash-glow-pulse {
+    animation: splash-glow 2.5s infinite alternate ease-in-out;
+}
+
+@keyframes splash-logo-in {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+        box-shadow: 0 0 0 rgba(6, 182, 212, 0);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+        box-shadow: 0 0 30px rgba(6, 182, 212, 0.4);
+    }
+}
+
+@keyframes splash-glow {
+    0% {
+        transform: scale(0.9);
+        opacity: 0.2;
+    }
+    100% {
+        transform: scale(1.1);
+        opacity: 0.5;
+    }
+}
+
+/* Splash out transition style */
+.splash-hidden {
+    opacity: 0;
+    transform: scale(1.08);
+    pointer-events: none;
+}
+
+/* Toast Notification Premium Styles */
+#toast-container {
+    pointer-events: none;
+    z-index: 9999;
+}
+
+.toast-notification {
+    background: rgba(18, 22, 32, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--jeansNeon);
+    box-shadow: 0 0 15px rgba(6, 182, 212, 0.25), inset 0 0 10px rgba(6, 182, 212, 0.05);
+    border-radius: 16px;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    pointer-events: auto;
+    transform: translateY(20px) scale(0.95);
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.toast-notification.toast-show {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+}
+
+.toast-notification.toast-hide {
+    transform: translateY(-10px) scale(0.9);
+    opacity: 0;
+}
+

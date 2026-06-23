@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Estilo Jeans Tupã - Roupas Estilosas & Streetwear Masculino</title>
+    
+    <!-- Meta tags SEO e Open Graph -->
+    <meta name="description" content="Encontre os melhores looks masculinos de streetwear e jeans da região de Tupã. Navegue pelo feed, assista aos stories e faça seu pedido direto pelo WhatsApp!">
+    <meta name="keywords" content="moda masculina, streetwear, estilo jeans tupã, calça jeans masculina, roupas masculinas, instagram shop, looks masculinos">
+    <meta name="author" content="Estilo Jeans Tupã">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://estilojeanstupa.com.br/">
+    <meta property="og:title" content="Estilo Jeans Tupã - Roupas Estilosas & Streetwear">
+    <meta property="og:description" content="Confira nosso catálogo de looks streetwear diretamente do Instagram. Escolha seus jeans, camisetas e moletons, monte seu pedido e retire na loja via WhatsApp!">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=600&q=80">
+    <meta property="og:site_name" content="Estilo Jeans Tupã">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Estilo Jeans Tupã - Roupas Estilosas & Streetwear">
+    <meta property="twitter:description" content="Confira nosso catálogo de looks streetwear diretamente do Instagram. Escolha seus jeans, camisetas e moletons, monte seu pedido e retire na loja via WhatsApp!">
+    <meta property="twitter:image" content="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=600&q=80">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        jeansDark: '#08090C',
+                        jeansSlate: '#121620',
+                        jeansSlateLight: '#1E2530',
+                        jeansBlue: '#2563EB',
+                        jeansNeon: '#06B6D4',
+                        brandLight: '#F8FAFC'
+                    },
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        display: ['Archivo Black', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-jeansDark text-brandLight bg-jeans-mesh min-h-screen flex flex-col antialiased">
+
+    <!-- Entrance Splash Screen Loader (Estética Limpa Premium) -->
+    <div id="splash-screen" class="fixed inset-0 z-50 bg-jeansDark flex flex-col items-center justify-center transition-all duration-800 ease-out">
+        <div class="flex flex-col items-center justify-center relative select-none">
+            <!-- Logo principal ampliado com borda neon -->
+            <div class="w-32 h-32 sm:w-40 sm:h-40 rounded-full overflow-hidden border-2 border-jeansNeon shadow-[0_0_30px_rgba(6,182,212,0.4)] splash-logo-intro">
+                <img src="data/media/logo.jpg" alt="Logo Estilo Jeans" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=300&q=80';">
+            </div>
+            <!-- Brilho neon de fundo para destacar o logotipo -->
+            <div class="absolute w-40 h-40 rounded-full bg-jeansNeon/25 blur-3xl -z-10 splash-glow-pulse"></div>
+        </div>
+    </div>
+
+    <!-- Blur Orbs for background aesthetics -->
+    <div class="jeans-orb bg-jeansBlue/15 top-1/4 left-1/4"></div>
+    <div class="jeans-orb bg-jeansNeon/10 top-2/3 right-1/4"></div>
+
+    <!-- Navigation Bar -->
+    <header id="site-header" class="sticky top-0 z-40 w-full glass shadow-lg transition-all duration-1000 opacity-0 translate-y-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center space-x-2 sm:space-x-3 group shrink">
+                <div class="w-9 h-9 sm:w-12 sm:h-12 rounded-full overflow-hidden border-2 border-jeansNeon/50 shadow-lg shadow-jeansNeon/10 group-hover:scale-105 transition-transform duration-300 flex items-center justify-center shrink-0">
+                    <img id="nav-brand-logo" src="data/media/logo.jpg" alt="Logo Estilo Jeans Tupã" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="w-full h-full bg-gradient-to-tr from-jeansBlue via-jeansNeon to-slate-900 flex items-center justify-center" style="display: none;">
+                        <span class="font-bold text-sm sm:text-base text-brandLight tracking-wider">EJ</span>
+                    </div>
+                </div>
+                <span class="font-bold text-lg sm:text-2xl tracking-tight text-white uppercase font-display">Estilo Jeans <span class="text-jeansNeon">Tupã</span></span>
+            </a>
+
+            <!-- Desk Nav & Actions -->
+            <nav class="hidden md:flex space-x-8 text-xs sm:text-sm font-semibold tracking-wider text-slate-300 uppercase">
+                <a href="#novidades" class="hover:text-jeansNeon transition-colors duration-200">Catálogo</a>
+                <a href="#como-funciona" class="hover:text-jeansNeon transition-colors duration-200">Como Funciona</a>
+                <a href="#reels-section" class="hover:text-jeansNeon transition-colors duration-200">Provador Reels</a>
+            </nav>
+
+            <div class="flex items-center space-x-2 sm:space-x-4">
+                <!-- Instagram Shortcut -->
+                <a href="https://www.instagram.com/estilojeanstupa/" target="_blank" class="w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center text-slate-300 hover:bg-slate-800 hover:text-jeansNeon transition-all duration-200" title="Siga nosso Instagram">
+                    <i class="fab fa-instagram text-lg"></i>
+                </a>
+
+                <!-- Cart Button -->
+                <button id="cart-trigger" class="relative w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-jeansSlate border border-slate-800 flex items-center justify-center text-brandLight hover:bg-slate-900 hover:border-jeansNeon hover:text-jeansNeon transition-all duration-300 shadow-lg" aria-label="Abrir carrinho de pedidos">
+                    <i class="fas fa-shopping-bag text-base sm:text-lg"></i>
+                    <span id="cart-badge" class="absolute -top-1 -right-1 bg-jeansNeon text-jeansDark text-[9px] sm:text-[10px] font-bold w-4 h-4 sm:w-5 sm:h-5 rounded-full flex items-center justify-center shadow-lg hidden">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="site-main" class="flex-grow z-10 transition-all duration-1000 opacity-0 translate-y-6">
+        
+        <!-- Instagram Stories Bar -->
+        <section id="stories-section" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4 sm:mt-6">
+            <div class="bg-jeansSlate/40 border border-slate-900/60 rounded-3xl p-4 flex gap-4 overflow-x-auto scrollbar-none snap-x snap-mandatory">
+                <!-- Stories Container -->
+                <div id="stories-container" class="flex gap-5">
+                    <!-- Skeleton Loaders de Stories (6 círculos pulsando) -->
+                    <div class="story-skeleton flex flex-col items-center gap-2 select-none shrink-0 snap-start">
+                        <div class="w-16 h-16 sm:w-[76px] sm:h-[76px] rounded-full bg-slate-800/80 animate-pulse border border-slate-700"></div>
+                        <div class="w-12 h-3 rounded bg-slate-800/80 animate-pulse"></div>
+                    </div>
+                    <div class="story-skeleton flex flex-col items-center gap-2 select-none shrink-0 snap-start">
+                        <div class="w-16 h-16 sm:w-[76px] sm:h-[76px] rounded-full bg-slate-800/80 animate-pulse border border-slate-700"></div>
+                        <div class="w-12 h-3 rounded bg-slate-800/80 animate-pulse"></div>
+                    </div>
+                    <div class="story-skeleton flex flex-col items-center gap-2 select-none shrink-0 snap-start">
+                        <div class="w-16 h-16 sm:w-[76px] sm:h-[76px] rounded-full bg-slate-800/80 animate-pulse border border-slate-700"></div>
+                        <div class="w-12 h-3 rounded bg-slate-800/80 animate-pulse"></div>
+                    </div>
+                    <div class="story-skeleton flex flex-col items-center gap-2 select-none shrink-0 snap-start">
+                        <div class="w-16 h-16 sm:w-[76px] sm:h-[76px] rounded-full bg-slate-800/80 animate-pulse border border-slate-700"></div>
+                        <div class="w-12 h-3 rounded bg-slate-800/80 animate-pulse"></div>
+                    </div>
+                    <div class="story-skeleton flex flex-col items-center gap-2 select-none shrink-0 snap-start">
+                        <div class="w-16 h-16 sm:w-[76px] sm:h-[76px] rounded-full bg-slate-800/80 animate-pulse border border-slate-700"></div>
+                        <div class="w-12 h-3 rounded bg-slate-800/80 animate-pulse"></div>
+                    </div>
+                    <div class="story-skeleton flex flex-col items-center gap-2 select-none shrink-0 snap-start">
+                        <div class="w-16 h-16 sm:w-[76px] sm:h-[76px] rounded-full bg-slate-800/80 animate-pulse border border-slate-700"></div>
+                        <div class="w-12 h-3 rounded bg-slate-800/80 animate-pulse"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Hero Banner Section -->
+        <section class="relative max-w-7xl mx-auto my-4 sm:my-6 px-4 sm:px-6 lg:px-8">
+            <div class="relative rounded-[1.5rem] sm:rounded-[2.5rem] overflow-hidden bg-slate-950 text-white shadow-2xl border border-slate-900">
+                <!-- Grid layout for desktop, stacked on mobile -->
+                <div class="grid grid-cols-1 md:grid-cols-12 items-center gap-6 sm:gap-10 p-6 sm:p-12 md:p-14 relative z-10">
+                    <!-- Hero Content (7 cols on desktop) -->
+                    <div class="md:col-span-7 space-y-4 sm:space-y-6">
+                        <span class="inline-flex items-center px-3 py-1 sm:px-4 sm:py-1.5 rounded-full bg-jeansBlue/25 border border-jeansBlue/50 text-[10px] sm:text-xs font-semibold tracking-widest text-jeansNeon uppercase">
+                            ⚡ O Novo Drop Streetwear Chegou
+                        </span>
+                        <h1 class="text-2xl sm:text-4xl md:text-5xl font-extrabold uppercase leading-[1.1] tracking-tight font-display text-white">
+                            O estilo streetwear <br class="hidden sm:inline">que define quem você é.
+                        </h1>
+                        <p class="text-slate-400 text-xs sm:text-sm md:text-base leading-relaxed font-light max-w-lg">
+                            Conectamos nosso Instagram oficial diretamente aqui. Assista aos stories em tempo real, escolha calças, bermudas, moletons e acessórios, e faça seu pedido para retirada rápida via WhatsApp!
+                        </p>
+                        <div class="pt-2 sm:pt-4">
+                            <a href="#novidades" class="px-5 py-3 sm:px-8 sm:py-4 bg-jeansBlue hover:bg-blue-700 text-white rounded-xl sm:rounded-2xl text-xs sm:text-sm font-semibold tracking-wide shadow-lg shadow-jeansBlue/30 hover:shadow-jeansNeon/20 hover:border-jeansNeon transition-all duration-300 inline-block border border-transparent">
+                                Explorar Catálogo <i class="fas fa-arrow-right ml-2 text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Store Photo Column (5 cols on desktop) -->
+                    <div class="md:col-span-5 w-full flex justify-center">
+                        <div class="relative w-full aspect-[4/3] sm:aspect-[16/10] md:aspect-[4/3] rounded-2xl overflow-hidden border border-slate-800 shadow-2xl shadow-jeansNeon/10 group card-hover-effect">
+                            <img src="data/media/store_photo.png" alt="Loja Estilo Jeans Tupã" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <!-- Glowing border accent -->
+                            <div class="absolute inset-0 border border-jeansNeon/20 rounded-2xl pointer-events-none group-hover:border-jeansNeon/55 transition-colors duration-300"></div>
+                            <!-- Small tag -->
+                            <span class="absolute bottom-3 left-3 px-2 py-1 rounded bg-black/75 backdrop-blur-sm text-[9px] font-bold text-slate-300 tracking-wider uppercase border border-slate-800">
+                                Nossa Loja Física
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Como Funciona Section -->
+        <section id="como-funciona" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+                <!-- Passo 1 -->
+                <div class="bg-jeansSlate/40 p-5 sm:p-6 rounded-2xl border border-slate-900 flex items-start gap-3 sm:gap-4 shadow-md hover:border-slate-800 transition">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-jeansBlue/25 border border-jeansBlue/40 flex items-center justify-center text-jeansNeon shrink-0 font-extrabold text-base sm:text-lg">
+                        1
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-white text-sm sm:text-base mb-1">Navegue no Feed & Stories</h4>
+                        <p class="text-[11px] sm:text-xs text-slate-400 leading-relaxed">Confira os looks diários postados nos Stories no topo ou navegue pela vitrine abaixo.</p>
+                    </div>
+                </div>
+                <!-- Passo 2 -->
+                <div class="bg-jeansSlate/40 p-5 sm:p-6 rounded-2xl border border-slate-900 flex items-start gap-3 sm:gap-4 shadow-md hover:border-slate-800 transition">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-indigo-950/50 border border-indigo-800/40 flex items-center justify-center text-indigo-400 shrink-0 font-extrabold text-base sm:text-lg">
+                        2
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-white text-sm sm:text-base mb-1">Selecione seu Tamanho</h4>
+                        <p class="text-[11px] sm:text-xs text-slate-400 leading-relaxed">Escolha os tamanhos masculinos convencionais (P ao GG) ou numerações de calça jeans (36 ao 48).</p>
+                    </div>
+                </div>
+                <!-- Passo 3 -->
+                <div class="bg-jeansSlate/40 p-5 sm:p-6 rounded-2xl border border-slate-900 flex items-start gap-3 sm:gap-4 shadow-md hover:border-slate-800 transition">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-cyan-950/50 border border-cyan-800/40 flex items-center justify-center text-jeansNeon shrink-0 font-extrabold text-base sm:text-lg">
+                        3
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-white text-sm sm:text-base mb-1">Retirada Rápida</h4>
+                        <p class="text-[11px] sm:text-xs text-slate-400 leading-relaxed">Envie seu pedido no WhatsApp. Separamos as peças para você retirar e pagar na loja!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Provador Virtual / Reels Section -->
+        <section id="reels-section" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+                <div>
+                    <span class="text-xs font-bold text-jeansNeon uppercase tracking-widest block mb-2">🎥 Provador Streetwear</span>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-white uppercase font-display">Vídeos do Instagram Reels</h2>
+                </div>
+                <p class="text-slate-400 text-xs sm:text-sm max-w-md">Veja o caimento real das peças no corpo através dos nossos vídeos. Adicione ao carrinho diretamente!</p>
+            </div>
+            
+            <!-- Horizontal Scrollable Reels Carousel -->
+            <div id="reels-carousel" class="flex gap-6 overflow-x-auto pb-4 scrollbar-thin snap-x snap-mandatory">
+                <!-- Populados via app.js -->
+            </div>
+        </section>
+
+        <!-- Product Feed (Vitrine Interativa) -->
+        <section id="novidades" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 scroll-mt-24">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+                <div>
+                    <span class="text-xs font-bold text-jeansNeon uppercase tracking-widest block mb-2">📦 Catálogo de Looks</span>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-white uppercase font-display">Mais Recentes no Instagram</h2>
+                </div>
+                <div class="flex items-center gap-2 text-xs text-slate-300 font-semibold bg-jeansSlate px-4 py-2.5 rounded-2xl border border-slate-800 shadow-md self-start md:self-auto">
+                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                    Instagram @estilojeanstupa
+                </div>
+            </div>
+
+            <!-- Busca e Filtros de Tamanho -->
+            <div class="mb-8 flex flex-col md:flex-row gap-4 items-center justify-between bg-jeansSlate/30 p-4 rounded-3xl border border-slate-900/60 backdrop-blur-md">
+                <!-- Barra de Busca -->
+                <div class="relative w-full md:max-w-xs">
+                    <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-500 pointer-events-none">
+                        <i class="fas fa-search text-xs"></i>
+                    </span>
+                    <input type="text" id="search-input" placeholder="Buscar looks..." class="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-800 focus:outline-none focus:border-jeansNeon focus:ring-1 focus:ring-jeansNeon text-sm bg-jeansSlate text-slate-100 shadow-inner font-medium">
+                </div>
+                
+                <!-- Filtros de Tamanho -->
+                <div class="flex gap-2 overflow-x-auto w-full md:w-auto pb-1 md:pb-0 scrollbar-none snap-x snap-mandatory">
+                    <button class="filter-btn active px-4 py-2 rounded-xl text-xs font-bold bg-jeansNeon text-jeansDark shadow-lg border border-jeansNeon transition-all shrink-0 snap-start uppercase" data-size="ALL">Todos</button>
+                    <button class="filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-jeansSlate text-slate-400 hover:text-white border border-slate-850 hover:border-slate-700 transition-all shrink-0 snap-start uppercase" data-size="P">P</button>
+                    <button class="filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-jeansSlate text-slate-400 hover:text-white border border-slate-850 hover:border-slate-700 transition-all shrink-0 snap-start uppercase" data-size="M">M</button>
+                    <button class="filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-jeansSlate text-slate-400 hover:text-white border border-slate-850 hover:border-slate-700 transition-all shrink-0 snap-start uppercase" data-size="G">G</button>
+                    <button class="filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-jeansSlate text-slate-400 hover:text-white border border-slate-850 hover:border-slate-700 transition-all shrink-0 snap-start uppercase" data-size="GG">GG</button>
+                    <div class="w-px h-6 bg-slate-800 shrink-0 self-center"></div>
+                    <button class="filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-jeansSlate text-slate-400 hover:text-white border border-slate-850 hover:border-slate-700 transition-all shrink-0 snap-start uppercase" data-size="38">38</button>
+                    <button class="filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-jeansSlate text-slate-400 hover:text-white border border-slate-850 hover:border-slate-700 transition-all shrink-0 snap-start uppercase" data-size="40">40</button>
+                    <button class="filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-jeansSlate text-slate-400 hover:text-white border border-slate-850 hover:border-slate-700 transition-all shrink-0 snap-start uppercase" data-size="42">42</button>
+                    <button class="filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-jeansSlate text-slate-400 hover:text-white border border-slate-850 hover:border-slate-700 transition-all shrink-0 snap-start uppercase" data-size="44">44</button>
+                    <button class="filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-jeansSlate text-slate-400 hover:text-white border border-slate-850 hover:border-slate-700 transition-all shrink-0 snap-start uppercase" data-size="46">46</button>
+                </div>
+            </div>
+
+            <!-- Products Grid -->
+            <div id="product-feed" class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6 lg:gap-8">
+                <!-- Skeleton Loader de Posts (6 cards de carregamento) -->
+                <div class="post-skeleton bg-jeansSlate/30 border border-slate-900 rounded-3xl overflow-hidden p-3 flex flex-col gap-3">
+                    <div class="w-full aspect-[4/5] rounded-2xl bg-slate-800/80 animate-pulse"></div>
+                    <div class="h-4 w-3/4 rounded bg-slate-800/80 animate-pulse"></div>
+                    <div class="h-3 w-1/2 rounded bg-slate-800/80 animate-pulse"></div>
+                    <div class="h-8 w-full rounded-xl bg-slate-800/80 animate-pulse mt-auto"></div>
+                </div>
+                <div class="post-skeleton bg-jeansSlate/30 border border-slate-900 rounded-3xl overflow-hidden p-3 flex flex-col gap-3">
+                    <div class="w-full aspect-[4/5] rounded-2xl bg-slate-800/80 animate-pulse"></div>
+                    <div class="h-4 w-3/4 rounded bg-slate-800/80 animate-pulse"></div>
+                    <div class="h-3 w-1/2 rounded bg-slate-800/80 animate-pulse"></div>
+                    <div class="h-8 w-full rounded-xl bg-slate-800/80 animate-pulse mt-auto"></div>
+                </div>
+                <div class="post-skeleton bg-jeansSlate/30 border border-slate-900 rounded-3xl overflow-hidden p-3 flex flex-col gap-3">
+                    <div class="w-full aspect-[4/5] rounded-2xl bg-slate-800/80 animate-pulse"></div>
+                    <div class="h-4 w-3/4 rounded bg-slate-800/80 animate-pulse"></div>
+                    <div class="h-3 w-1/2 rounded bg-slate-800/80 animate-pulse"></div>
+                    <div class="h-8 w-full rounded-xl bg-slate-800/80 animate-pulse mt-auto"></div>
+                </div>
+                <div class="post-skeleton bg-jeansSlate/30 border border-slate-900 rounded-3xl overflow-hidden p-3 flex flex-col gap-3">
+                    <div class="w-full aspect-[4/5] rounded-2xl bg-slate-800/80 animate-pulse"></div>
+                    <div class="h-4 w-3/4 rounded bg-slate-800/80 animate-pulse"></div>
+                    <div class="h-3 w-1/2 rounded bg-slate-800/80 animate-pulse"></div>
+                    <div class="h-8 w-full rounded-xl bg-slate-800/80 animate-pulse mt-auto"></div>
+                </div>
+                <div class="post-skeleton bg-jeansSlate/30 border border-slate-900 rounded-3xl overflow-hidden p-3 flex flex-col gap-3">
+                    <div class="w-full aspect-[4/5] rounded-2xl bg-slate-800/80 animate-pulse"></div>
+                    <div class="h-4 w-3/4 rounded bg-slate-800/80 animate-pulse"></div>
+                    <div class="h-3 w-1/2 rounded bg-slate-800/80 animate-pulse"></div>
+                    <div class="h-8 w-full rounded-xl bg-slate-800/80 animate-pulse mt-auto"></div>
+                </div>
+                <div class="post-skeleton bg-jeansSlate/30 border border-slate-900 rounded-3xl overflow-hidden p-3 flex flex-col gap-3">
+                    <div class="w-full aspect-[4/5] rounded-2xl bg-slate-800/80 animate-pulse"></div>
+                    <div class="h-4 w-3/4 rounded bg-slate-800/80 animate-pulse"></div>
+                    <div class="h-3 w-1/2 rounded bg-slate-800/80 animate-pulse"></div>
+                    <div class="h-8 w-full rounded-xl bg-slate-800/80 animate-pulse mt-auto"></div>
+                </div>
+            </div>
+
+            <!-- Painel de Paginação -->
+            <div id="pagination" class="mt-12 flex justify-center items-center gap-2 flex-wrap">
+                <!-- Populado via app.js -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="contato" class="bg-slate-950 border-t border-slate-900 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="space-y-4">
+                <span class="font-bold text-xl uppercase tracking-wider text-white font-display">Estilo Jeans <span class="text-jeansNeon">Tupã</span></span>
+                <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">
+                    A melhor curadoria de streetwear, moletons pesados e calças jeans da região. Exclusividade e qualidade premium para quem tem estilo.
+                </p>
+            </div>
+            <div class="space-y-4">
+                <h4 class="font-bold text-sm text-white uppercase tracking-wider">Atendimento & Retirada</h4>
+                <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">
+                    Rua Aimorés, 1420 - Centro<br>
+                    Tupã - SP<br>
+                    Segunda a Sábado: 09:00h às 18:00h
+                </p>
+            </div>
+            <div class="space-y-4">
+                <h4 class="font-bold text-sm text-white uppercase tracking-wider">Contatos</h4>
+                <div class="flex flex-col space-y-2 text-xs sm:text-sm text-slate-400">
+                    <a href="https://wa.me/5514999999999" class="hover:text-jeansNeon transition flex items-center gap-2">
+                        <i class="fab fa-whatsapp text-emerald-400"></i> (14) 99999-9999
+                    </a>
+                    <a href="https://www.instagram.com/estilojeanstupa/" target="_blank" class="hover:text-jeansNeon transition flex items-center gap-2">
+                        <i class="fab fa-instagram text-rose-400"></i> @estilojeanstupa
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 pt-6 border-t border-slate-900 text-center text-xs text-slate-500">
+            &copy; 2026 Estilo Jeans Tupã. Todos os direitos reservados.
+        </div>
+    </footer>
+
+    <!-- Cart Sliding Drawer (Carrinho Flutuante) -->
+    <div id="cart-overlay" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden transition-opacity"></div>
+    <div id="cart-drawer" class="fixed top-0 right-0 h-full w-full sm:w-[450px] bg-jeansSlate border-l border-slate-800 shadow-2xl z-50 translate-x-full transition-transform duration-300 ease-in-out flex flex-col">
+        <!-- Drawer Header -->
+        <div class="p-6 border-b border-slate-800 flex items-center justify-between bg-slate-950">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-full overflow-hidden border border-jeansNeon/50 shadow-md">
+                    <img src="data/media/logo.jpg" alt="Logo" class="w-full h-full object-cover" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png';">
+                </div>
+                <h3 class="text-lg font-bold text-white uppercase font-display tracking-tight">Seu Pedido</h3>
+            </div>
+            <button id="cart-close" class="w-8 h-8 rounded-full hover:bg-slate-800 flex items-center justify-center text-slate-400 hover:text-white transition" aria-label="Fechar carrinho">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <!-- Drawer Content (Scrollable items) -->
+        <div class="flex-grow overflow-y-auto p-6 space-y-6">
+            <!-- Lista de Itens -->
+            <div id="cart-items" class="space-y-4">
+                <!-- Populado via app.js -->
+            </div>
+
+            <!-- Formulário de Informações do Cliente -->
+            <div id="cart-form-section" class="pt-6 border-t border-slate-800 hidden">
+                <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-4 flex items-center gap-2">
+                    <i class="fas fa-user-circle text-jeansNeon"></i> Seus Dados para Reserva
+                </h4>
+                <div class="space-y-4">
+                    <div>
+                        <label for="client-name" class="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1.5">Seu Nome completo *</label>
+                        <input type="text" id="client-name" placeholder="Ex: João da Silva" class="w-full px-4 py-3 rounded-xl border border-slate-800 focus:outline-none focus:border-jeansNeon text-sm bg-slate-900 text-white font-medium">
+                    </div>
+                    <div>
+                        <label for="client-phone" class="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1.5">WhatsApp / Telefone *</label>
+                        <input type="tel" id="client-phone" placeholder="Ex: (14) 99999-9999" class="w-full px-4 py-3 rounded-xl border border-slate-800 focus:outline-none focus:border-jeansNeon text-sm bg-slate-900 text-white font-medium">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Drawer Footer -->
+        <div class="p-6 border-t border-slate-800 bg-slate-950 space-y-4">
+            <div class="flex items-center justify-between text-sm text-slate-400">
+                <span>Subtotal</span>
+                <span id="cart-subtotal" class="font-extrabold text-white text-base">R$ 0,00</span>
+            </div>
+            <button id="cart-submit" class="w-full py-4 bg-jeansBlue hover:bg-blue-700 text-white rounded-xl text-sm font-bold tracking-wider uppercase shadow-lg shadow-jeansBlue/30 hover:border-jeansNeon transition-all flex items-center justify-center gap-2 border border-transparent">
+                <i class="fab fa-whatsapp text-base"></i> Enviar Pedido via WhatsApp
+            </button>
+            <p class="text-[10px] text-slate-500 text-center leading-relaxed">
+                Reservamos suas peças no WhatsApp. Finalize e retire diretamente em nossa loja física em Tupã.
+            </p>
+        </div>
+    </div>
+
+    <!-- Stories Fullscreen Viewer Modal -->
+    <div id="stories-viewer" class="fixed inset-0 bg-black/95 backdrop-blur-md z-50 hidden flex items-center justify-center">
+        <!-- Player Container -->
+        <div class="relative max-w-md w-full h-full md:h-[90vh] md:max-h-[820px] bg-neutral-950 md:rounded-3xl overflow-hidden shadow-2xl flex flex-col justify-between select-none">
+            
+            <!-- Touch navigation overlay (Left and Right clickable sections) -->
+            <div class="absolute inset-x-0 top-20 bottom-24 z-10 flex">
+                <div id="story-touch-left" class="w-1/3 h-full cursor-w-resize" title="Voltar Story"></div>
+                <div id="story-touch-right" class="w-2/3 h-full cursor-e-resize" title="Próximo Story"></div>
+            </div>
+
+            <!-- Top Indicator Bar & Profile Info -->
+            <div class="absolute top-0 inset-x-0 p-4 bg-gradient-to-b from-black/80 to-transparent z-20 space-y-3">
+                <!-- Progress Bars (populated dynamically) -->
+                <div id="story-progress-container" class="flex gap-1.5 w-full h-[3px]">
+                    <!-- Ex: <div class="flex-grow bg-white/30 rounded-full h-full overflow-hidden"><div class="bg-white h-full" style="width: 50%;"></div></div> -->
+                </div>
+                
+                <!-- Profile Header -->
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-2">
+                        <div class="w-9 h-9 rounded-full overflow-hidden border border-jeansNeon/50">
+                            <img src="data/media/logo.jpg" alt="Logo" class="w-full h-full object-cover" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png';">
+                        </div>
+                        <div>
+                            <h4 class="text-xs font-bold text-white uppercase tracking-wider">Estilo Jeans Tupã</h4>
+                            <span id="story-type-label" class="text-[9px] text-slate-400 font-bold bg-slate-800/80 px-2 py-0.5 rounded border border-slate-700/60">Novidades</span>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center gap-2 z-30">
+                        <!-- Botão de controle de áudio (Mute/Unmute) -->
+                        <button id="story-mute-btn" class="w-8 h-8 rounded-full bg-black/45 border border-white/10 hover:bg-black/70 flex items-center justify-center text-white text-xs transition" title="Ativar Som">
+                            <i class="fas fa-volume-mute"></i>
+                        </button>
+                        
+                        <!-- Botão de Fechar -->
+                        <button id="stories-close" class="w-8 h-8 rounded-full bg-black/45 border border-white/10 hover:bg-slate-900 flex items-center justify-center text-white text-xs transition" title="Fechar Visualizador">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Media Container (Central media) -->
+            <div id="story-media-container" class="w-full h-full flex items-center justify-center bg-black relative">
+                <!-- Imagem ou Vídeo injetado aqui -->
+            </div>
+
+            <!-- Bottom Content (Caption & CTA Button) -->
+            <div class="absolute bottom-0 inset-x-0 p-5 bg-gradient-to-t from-black/90 via-black/60 to-transparent z-20 space-y-4">
+                <!-- Story Legend -->
+                <p id="story-caption" class="text-xs sm:text-sm text-slate-200 font-medium leading-relaxed drop-shadow-md">
+                    Legenda do story carregando...
+                </p>
+
+                <!-- Action Button -->
+                <div id="story-cta-container" class="flex gap-2">
+                    <button id="story-buy-btn" class="flex-grow py-3 px-4 bg-jeansNeon hover:bg-cyan-500 text-jeansDark font-bold rounded-xl text-xs sm:text-sm tracking-wider uppercase transition-all flex items-center justify-center gap-2 border border-transparent shadow-lg shadow-jeansNeon/30 btn-glow">
+                        <i class="fas fa-shopping-bag"></i> Comprar Look <span id="story-price-tag" class="ml-1 opacity-90 font-extrabold"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script de Inicialização -->
+    <script src="data/instagram_posts.js" onerror="console.warn('data/instagram_posts.js não encontrado localmente.');"></script>
+    <script src="data/stories.js" onerror="console.warn('data/stories.js não encontrado localmente.');"></script>
+    <!-- Modal de Detalhes do Produto (Pop-up Premium) -->
+    <div id="product-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md hidden p-4 sm:p-6 transition-all duration-300 opacity-0 overflow-y-auto" onclick="closeProductModalOnOverlay(event)">
+        <div class="relative w-full max-w-lg md:max-w-3xl bg-jeansSlate/95 border border-slate-800 rounded-3xl overflow-hidden shadow-[0_0_50px_rgba(6,182,212,0.15)] transform scale-95 transition-all duration-300 my-auto" id="product-modal-content">
+            <!-- Botão de Fechar -->
+            <button onclick="closeProductModal()" class="absolute top-4 right-4 z-10 w-9 h-9 rounded-xl bg-black/60 hover:bg-slate-900 border border-white/10 flex items-center justify-center text-white text-sm transition" title="Fechar">
+                <i class="fas fa-times"></i>
+            </button>
+
+            <div class="grid grid-cols-1 md:grid-cols-2">
+                <!-- Coluna da Imagem -->
+                <div class="w-full aspect-[16/10] md:aspect-[4/5] md:h-full bg-slate-950 overflow-hidden relative">
+                    <img id="modal-product-img" src="" alt="" class="w-full h-full object-cover">
+                    <!-- Instagram Link overlay -->
+                    <a id="modal-product-instagram" href="" target="_blank" class="absolute bottom-4 left-4 px-3 py-1.5 rounded-xl bg-black/60 backdrop-blur-md flex items-center gap-1.5 text-white text-xs hover:bg-jeansNeon hover:text-jeansDark transition" title="Ver post no Instagram">
+                        <i class="fab fa-instagram"></i> Ver no Instagram
+                    </a>
+                </div>
+
+                <!-- Coluna de Detalhes -->
+                <div class="p-6 sm:p-8 flex flex-col justify-between max-h-[75vh] md:max-h-[600px] overflow-y-auto">
+                    <div class="space-y-4">
+                        <h3 id="modal-product-title" class="text-lg sm:text-xl font-extrabold text-white uppercase tracking-wide">Título do Produto</h3>
+                        
+                        <!-- Preço -->
+                        <div id="modal-product-price" class="flex items-baseline gap-2">
+                            <!-- Injetado por JS -->
+                        </div>
+
+                        <!-- Divisor -->
+                        <hr class="border-slate-800">
+
+                        <!-- Descrição / Legenda Completa -->
+                        <div class="space-y-1.5">
+                            <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">Descrição do Produto:</span>
+                            <div id="modal-product-desc" class="text-xs text-slate-300 leading-relaxed font-light whitespace-pre-wrap max-h-40 overflow-y-auto pr-1 scrollbar-none">
+                                Legenda completa do Instagram vai aqui...
+                            </div>
+                        </div>
+
+                        <!-- Divisor -->
+                        <hr class="border-slate-800">
+
+                        <!-- Seletor de Tamanhos -->
+                        <div class="space-y-2">
+                            <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">Tamanhos Disponíveis:</span>
+                            <div id="modal-product-sizes" class="flex flex-wrap gap-2">
+                                <!-- Injetado por JS -->
+                            </div>
+                        </div>
+
+                        <!-- Seletor de Cores (Se houver) -->
+                        <div id="modal-product-colors-container" class="space-y-2 hidden">
+                            <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">Cores Disponíveis:</span>
+                            <div id="modal-product-colors" class="flex flex-wrap gap-1.5">
+                                <!-- Injetado por JS -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Botão de Compra -->
+                    <div class="pt-6 mt-auto">
+                        <button id="modal-product-add-btn" class="w-full py-4 bg-jeansBlue hover:bg-blue-700 text-white rounded-xl text-xs sm:text-sm font-bold tracking-wider uppercase transition shadow-lg shadow-jeansBlue/25 flex items-center justify-center gap-2 border border-transparent hover:border-jeansNeon">
+                            <i class="fas fa-shopping-bag"></i> Adicionar ao Carrinho
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Container de Notificações Toast -->
+    <div id="toast-container" class="fixed bottom-6 right-6 z-50 flex flex-col gap-3 pointer-events-none max-w-sm w-[calc(100%-2rem)] sm:w-80"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
