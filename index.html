@@ -56,14 +56,25 @@
 <body class="bg-jeansDark text-brandLight bg-jeans-mesh min-h-screen flex flex-col antialiased">
 
     <!-- Entrance Splash Screen Loader (Estética Limpa Premium) -->
-    <div id="splash-screen" class="fixed inset-0 z-50 bg-jeansDark flex flex-col items-center justify-center transition-all duration-800 ease-out">
-        <div class="flex flex-col items-center justify-center relative select-none">
+    <div id="splash-screen" class="fixed inset-0 z-50 bg-jeansDark flex flex-col items-center justify-center transition-all duration-800 ease-out p-6">
+        <div class="flex flex-col items-center justify-center relative select-none max-w-sm w-full space-y-6">
             <!-- Logo principal ampliado com borda neon -->
             <div class="w-32 h-32 sm:w-40 sm:h-40 rounded-full overflow-hidden border-2 border-jeansNeon shadow-[0_0_30px_rgba(6,182,212,0.4)] splash-logo-intro">
                 <img src="data/media/logo.jpg" alt="Logo Estilo Jeans" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=300&q=80';">
             </div>
             <!-- Brilho neon de fundo para destacar o logotipo -->
             <div class="absolute w-40 h-40 rounded-full bg-jeansNeon/25 blur-3xl -z-10 splash-glow-pulse"></div>
+            
+            <!-- Mensagem de Boas-vindas -->
+            <div class="text-center space-y-2 pt-2 splash-logo-intro">
+                <h2 class="text-lg sm:text-xl font-black uppercase tracking-widest text-white font-display">Estilo Jeans Tupã</h2>
+                <p class="text-[10px] sm:text-xs text-slate-400 font-semibold tracking-wider uppercase">Carregando o melhor do streetwear...</p>
+            </div>
+            
+            <!-- Barra de Carregamento Premium -->
+            <div class="w-48 h-1.5 bg-slate-900 border border-slate-800 rounded-full overflow-hidden relative splash-logo-intro">
+                <div id="splash-progress" class="absolute left-0 top-0 bottom-0 bg-gradient-to-r from-jeansBlue to-jeansNeon rounded-full transition-all duration-1000 ease-out" style="width: 0%;"></div>
+            </div>
         </div>
     </div>
 
@@ -342,8 +353,8 @@
             <div class="space-y-4">
                 <h4 class="font-bold text-sm text-white uppercase tracking-wider">Contatos</h4>
                 <div class="flex flex-col space-y-2 text-xs sm:text-sm text-slate-400">
-                    <a href="https://wa.me/5514999999999" class="hover:text-jeansNeon transition flex items-center gap-2">
-                        <i class="fab fa-whatsapp text-emerald-400"></i> (14) 99999-9999
+                    <a href="https://wa.me/5514996463686" class="hover:text-jeansNeon transition flex items-center gap-2">
+                        <i class="fab fa-whatsapp text-emerald-400"></i> (14) 99646-3686
                     </a>
                     <a href="https://www.instagram.com/estilojeanstupa/" target="_blank" class="hover:text-jeansNeon transition flex items-center gap-2">
                         <i class="fab fa-instagram text-rose-400"></i> @estilojeanstupa
@@ -490,8 +501,8 @@
             </button>
 
             <div class="grid grid-cols-1 md:grid-cols-2">
-                <!-- Coluna da Imagem -->
-                <div class="w-full aspect-[16/10] md:aspect-[4/5] md:h-full bg-slate-950 overflow-hidden relative">
+                <!-- Coluna da Imagem (Oculta no celular, visível a partir do desktop md) -->
+                <div class="hidden md:block w-full md:aspect-[4/5] md:h-full bg-slate-950 overflow-hidden relative">
                     <img id="modal-product-img" src="" alt="" class="w-full h-full object-cover">
                     <!-- Instagram Link overlay -->
                     <a id="modal-product-instagram" href="" target="_blank" class="absolute bottom-4 left-4 px-3 py-1.5 rounded-xl bg-black/60 backdrop-blur-md flex items-center gap-1.5 text-white text-xs hover:bg-jeansNeon hover:text-jeansDark transition" title="Ver post no Instagram">
@@ -500,22 +511,40 @@
                 </div>
 
                 <!-- Coluna de Detalhes -->
-                <div class="p-6 sm:p-8 flex flex-col justify-between max-h-[75vh] md:max-h-[600px] overflow-y-auto">
-                    <div class="space-y-4">
-                        <h3 id="modal-product-title" class="text-lg sm:text-xl font-extrabold text-white uppercase tracking-wide">Título do Produto</h3>
-                        
-                        <!-- Preço -->
-                        <div id="modal-product-price" class="flex items-baseline gap-2">
-                            <!-- Injetado por JS -->
+                <div class="p-5 md:p-8 flex flex-col justify-between max-h-[85vh] md:max-h-[600px] overflow-y-auto">
+                    <div class="space-y-3.5 md:space-y-4">
+                        <!-- Header para Mobile (Miniatura + Título + Preço + Link Instagram) -->
+                        <div class="flex gap-3 items-center md:hidden border-b border-slate-800 pb-3.5">
+                            <div class="w-16 h-20 bg-slate-950 rounded-2xl overflow-hidden border border-slate-800 shrink-0 relative">
+                                <img id="modal-product-img-mobile" src="" alt="" class="w-full h-full object-cover">
+                            </div>
+                            <div class="flex-grow min-w-0">
+                                <h3 id="modal-product-title-mobile" class="text-sm sm:text-base font-extrabold text-white uppercase tracking-wide truncate">Título</h3>
+                                <div id="modal-product-price-mobile" class="flex items-baseline gap-2 mt-1">
+                                    <!-- Injetado por JS -->
+                                </div>
+                                <a id="modal-product-instagram-mobile" href="" target="_blank" class="mt-1.5 text-[10px] text-slate-400 hover:text-jeansNeon flex items-center gap-1">
+                                    <i class="fab fa-instagram"></i> Ver no Instagram
+                                </a>
+                            </div>
                         </div>
 
-                        <!-- Divisor -->
-                        <hr class="border-slate-800">
+                        <!-- Header para Desktop -->
+                        <div class="hidden md:block space-y-4">
+                            <h3 id="modal-product-title" class="text-lg sm:text-xl font-extrabold text-white uppercase tracking-wide">Título do Produto</h3>
+                            <!-- Preço -->
+                            <div id="modal-product-price" class="flex items-baseline gap-2">
+                                <!-- Injetado por JS -->
+                            </div>
+                        </div>
+                        
+                        <!-- Divisor Desktop -->
+                        <hr class="hidden md:block border-slate-800">
 
                         <!-- Descrição / Legenda Completa -->
                         <div class="space-y-1.5">
-                            <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">Descrição do Produto:</span>
-                            <div id="modal-product-desc" class="text-xs text-slate-300 leading-relaxed font-light whitespace-pre-wrap max-h-40 overflow-y-auto pr-1 scrollbar-none">
+                            <span class="text-[9px] font-bold text-slate-500 uppercase tracking-wider block">Descrição do Produto:</span>
+                            <div id="modal-product-desc" class="text-xs text-slate-300 leading-relaxed font-light whitespace-pre-wrap max-h-32 md:max-h-40 overflow-y-auto pr-1 scrollbar-none">
                                 Legenda completa do Instagram vai aqui...
                             </div>
                         </div>
@@ -525,15 +554,15 @@
 
                         <!-- Seletor de Tamanhos -->
                         <div class="space-y-2">
-                            <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">Tamanhos Disponíveis:</span>
-                            <div id="modal-product-sizes" class="flex flex-wrap gap-2">
+                            <span class="text-[9px] font-bold text-slate-500 uppercase tracking-wider block">Tamanhos Disponíveis:</span>
+                            <div id="modal-product-sizes" class="flex flex-wrap gap-1.5">
                                 <!-- Injetado por JS -->
                             </div>
                         </div>
 
                         <!-- Seletor de Cores (Se houver) -->
                         <div id="modal-product-colors-container" class="space-y-2 hidden">
-                            <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">Cores Disponíveis:</span>
+                            <span class="text-[9px] font-bold text-slate-500 uppercase tracking-wider block">Cores Disponíveis:</span>
                             <div id="modal-product-colors" class="flex flex-wrap gap-1.5">
                                 <!-- Injetado por JS -->
                             </div>
@@ -541,8 +570,8 @@
                     </div>
 
                     <!-- Botão de Compra -->
-                    <div class="pt-6 mt-auto">
-                        <button id="modal-product-add-btn" class="w-full py-4 bg-jeansBlue hover:bg-blue-700 text-white rounded-xl text-xs sm:text-sm font-bold tracking-wider uppercase transition shadow-lg shadow-jeansBlue/25 flex items-center justify-center gap-2 border border-transparent hover:border-jeansNeon">
+                    <div class="pt-4 md:pt-6 mt-auto">
+                        <button id="modal-product-add-btn" class="w-full py-3.5 bg-jeansBlue hover:bg-blue-700 text-white rounded-xl text-xs sm:text-sm font-bold tracking-wider uppercase transition shadow-lg shadow-jeansBlue/25 flex items-center justify-center gap-2 border border-transparent hover:border-jeansNeon">
                             <i class="fas fa-shopping-bag"></i> Adicionar ao Carrinho
                         </button>
                     </div>

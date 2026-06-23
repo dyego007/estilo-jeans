@@ -201,9 +201,18 @@ let storyDuration = 5000; // Duração padrão
 // Função de animação da tela de Splash de entrada (Estética Limpa Premium)
 function runSplashScreen() {
     const splash = document.getElementById("splash-screen");
+    const progress = document.getElementById("splash-progress");
     if (!splash) return;
     
-    // Revela o site após 1.6 segundos de exibição da logo
+    // Anima a barra de progresso para 100%
+    setTimeout(() => {
+        if (progress) {
+            progress.style.transition = "width 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+            progress.style.width = "100%";
+        }
+    }, 100);
+    
+    // Revela o site após 1.8 segundos de exibição
     setTimeout(() => {
         splash.classList.add("splash-hidden");
         
@@ -221,8 +230,9 @@ function runSplashScreen() {
         setTimeout(() => {
             splash.style.display = "none";
         }, 800);
-    }, 1600);
+    }, 1800);
 }
+
 
 // Inicialização da Página
 document.addEventListener("DOMContentLoaded", () => {
@@ -1037,13 +1047,13 @@ function addStoryProductToCart() {
         const codeText = product ? ` (Código: ${product.id})` : "";
         const urlText = product ? `\nLink do Instagram: https://www.instagram.com/p/${product.id}/` : "";
         const message = `Olá! Vi o vídeo de provador${codeText} no site da loja e gostaria de tirar uma dúvida sobre as roupas dele!${urlText}`;
-        window.open(`https://wa.me/5514999999999?text=${encodeURIComponent(message)}`, "_blank");
+        window.open(`https://wa.me/5514996463686?text=${encodeURIComponent(message)}`, "_blank");
         return;
     }
     
     if (productId === "whatsapp_geral" || action === "whatsapp_geral") {
         // Caso não tenha produto específico, envia para o WhatsApp geral da loja
-        window.open("https://wa.me/5514999999999?text=Ol%C3%A1%2C%20vi%20o%20story%20no%20site%20e%20gostaria%20de%20tirar%20uma%20d%C3%BAvida!", "_blank");
+        window.open("https://wa.me/5514996463686?text=Ol%C3%A1%2C%20vi%20o%20story%20no%20site%20e%20gostaria%20de%20tirar%20uma%20d%C3%BAvida!", "_blank");
         return;
     }
     
@@ -1349,7 +1359,7 @@ function submitOrder() {
     message += `⚡ _Este pedido foi gerado no site e as peças foram solicitadas para separação e retirada na loja física._`;
     
     // Telefone da loja (exemplo: estilojeanstupa)
-    const storeWhatsApp = "5514999999999";
+    const storeWhatsApp = "5514996463686";
     const encodedText = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/${storeWhatsApp}?text=${encodedText}`;
     
@@ -1414,32 +1424,50 @@ function openProductModal(productId) {
     const product = products.find(p => p.id === productId);
     if (!product) return;
     
-    // Preenche imagem do produto
+    // Preenche imagem do produto (Desktop e Mobile)
     const imgEl = document.getElementById("modal-product-img");
-    imgEl.src = product.image_url;
-    imgEl.alt = getCleanTitle(product.caption);
+    if (imgEl) {
+        imgEl.src = product.image_url;
+        imgEl.alt = getCleanTitle(product.caption);
+    }
+    const imgMobileEl = document.getElementById("modal-product-img-mobile");
+    if (imgMobileEl) {
+        imgMobileEl.src = product.image_url;
+        imgMobileEl.alt = getCleanTitle(product.caption);
+    }
     
-    // Link do post do Instagram
+    // Link do post do Instagram (Desktop e Mobile)
     const instaLink = document.getElementById("modal-product-instagram");
-    instaLink.href = product.instagram_url;
+    if (instaLink) instaLink.href = product.instagram_url;
     
-    // Título do Produto
+    const instaMobileLink = document.getElementById("modal-product-instagram-mobile");
+    if (instaMobileLink) instaMobileLink.href = product.instagram_url;
+    
+    // Título do Produto (Desktop e Mobile)
     const titleEl = document.getElementById("modal-product-title");
-    titleEl.innerText = getCleanTitle(product.caption);
+    if (titleEl) titleEl.innerText = getCleanTitle(product.caption);
     
-    // Preço do Produto com Promoção se houver
+    const titleMobileEl = document.getElementById("modal-product-title-mobile");
+    if (titleMobileEl) titleMobileEl.innerText = getCleanTitle(product.caption);
+    
+    // Preço do Produto com Promoção se houver (Desktop e Mobile)
     const priceEl = document.getElementById("modal-product-price");
     const hasPromo = product.old_price && product.old_price > product.price;
+    let priceHTML = "";
     if (hasPromo) {
-        priceEl.innerHTML = `
+        priceHTML = `
             <span class="text-xs sm:text-sm text-slate-500 line-through">De R$ ${product.old_price.toFixed(2).replace('.', ',')}</span>
             <span class="text-lg sm:text-xl font-extrabold text-jeansNeon">Por R$ ${product.price.toFixed(2).replace('.', ',')}</span>
         `;
     } else {
-        priceEl.innerHTML = `
+        priceHTML = `
             <span class="text-lg sm:text-xl font-extrabold text-jeansNeon">R$ ${product.price.toFixed(2).replace('.', ',')}</span>
         `;
     }
+    if (priceEl) priceEl.innerHTML = priceHTML;
+    
+    const priceMobileEl = document.getElementById("modal-product-price-mobile");
+    if (priceMobileEl) priceMobileEl.innerHTML = priceHTML;
     
     // Descrição / Legenda completa
     const descEl = document.getElementById("modal-product-desc");
