@@ -1289,18 +1289,19 @@ function renderCart() {
         itemRow.className = "flex gap-3 bg-slate-900/60 p-3 rounded-2xl border border-slate-850 relative group";
         
         itemRow.innerHTML = `
-            <div class="w-14 h-18 rounded-xl overflow-hidden bg-slate-950 shrink-0">
+            <div onclick="closeCart(); openProductModal('${item.id}');" class="w-14 h-18 rounded-xl overflow-hidden bg-slate-950 shrink-0 cursor-pointer hover:opacity-85 transition" title="Ver detalhes do look">
                 <img src="${item.image_url}" alt="${item.name}" class="w-full h-full object-cover">
             </div>
             
             <div class="flex-grow flex flex-col justify-between">
                 <div>
-                    <h5 class="text-xs font-bold text-white line-clamp-1 pr-6">${item.name}</h5>
+                    <h5 onclick="closeCart(); openProductModal('${item.id}');" class="text-xs font-bold text-white line-clamp-1 pr-6 cursor-pointer hover:text-jeansNeon transition" title="Ver detalhes do look">${item.name}</h5>
                     <div class="flex flex-wrap items-center gap-2 mt-0.5">
                         ${sizeSelectorHTML}
                         <span class="text-[9px] font-semibold text-slate-400">Cor: ${item.color}</span>
                     </div>
                 </div>
+
                 
                 <div class="flex items-center justify-between mt-2">
                     <!-- Controle de Qtd -->
